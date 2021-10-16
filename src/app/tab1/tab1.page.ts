@@ -18,9 +18,17 @@ export class Tab1Page {
       this.peliculasNuevas = res.results;
     });
 
+    this.getPopulares();
+  }
+
+  cargarMas() {
+    this.getPopulares();
+  }
+
+  getPopulares() {
     this.moviesService.getPopulares().subscribe((res) => {
-      console.log('Populares', res);
-      this.populares = res.results;
+      const peliculasTemp = [...this.populares, ...res.results];
+      this.populares = peliculasTemp;
     });
   }
 }

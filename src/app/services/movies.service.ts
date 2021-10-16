@@ -10,14 +10,16 @@ const data = environment;
 })
 export class MoviesService {
   constructor(private http: HttpClient) {}
+  private popuparesPage = 0;
 
   private ejecuteQuery<T>(query: string) {
     query = data.url + query;
     query += `&api_key=${data.api_key}&language=es`;
     return this.http.get<T>(query);
   }
-  getPopulares(){
-    const query = '/discover/movie?sort_by=popularity.desc';
+  getPopulares() {
+    this.popuparesPage++;
+    const query = `/discover/movie?sort_by=popularity.desc&page=${this.popuparesPage}`;
     return this.ejecuteQuery<RespuestaMDB>(query);
   }
 
@@ -44,5 +46,9 @@ export class MoviesService {
     return this.ejecuteQuery<RespuestaMDB>(
       `/discover/movie?primary_release_date.gte=${start}&primary_release_date.lte=${end}`
     );
+  }
+
+  getPeliculaDetalle(){
+    return this.ejecuteQuery()
   }
 }

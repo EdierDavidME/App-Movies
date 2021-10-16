@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { RespuestaMDB } from '../interfaces/interfaces';
+import { ActoresPelicula, PeliculaDetalle, RespuestaMDB } from '../interfaces/interfaces';
 import { environment } from '../../environments/environment';
 
 const data = environment;
@@ -48,7 +48,12 @@ export class MoviesService {
     );
   }
 
-  getPeliculaDetalle(){
-    return this.ejecuteQuery()
+  getPeliculaDetalle(id: number) {
+    return this.ejecuteQuery<PeliculaDetalle>(`/movie/${id}?a=1`);
   }
+
+  getActoresPelicula(id: number) {
+    return this.ejecuteQuery<ActoresPelicula>(`/movie/${id}/credits?a=1`);
+  }
+
 }

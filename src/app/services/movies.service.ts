@@ -16,6 +16,10 @@ export class MoviesService {
     query += `&api_key=${data.api_key}&language=es`;
     return this.http.get<T>(query);
   }
+  getPopulares(){
+    const query = '/discover/movie?sort_by=popularity.desc';
+    return this.ejecuteQuery<RespuestaMDB>(query);
+  }
 
   getFeature() {
     // debugger;

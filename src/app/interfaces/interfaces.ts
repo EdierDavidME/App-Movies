@@ -50,7 +50,7 @@ export interface PeliculaDetalle {
   vote_count?: number;
 }
 
-interface Spokenlanguage {
+export interface Spokenlanguage {
   english_name: string;
 
   iso_639_1: string;
@@ -58,13 +58,13 @@ interface Spokenlanguage {
   name: string;
 }
 
-interface Productioncountry {
+export interface Productioncountry {
   iso_3166_1: string;
 
   name: string;
 }
 
-interface Productioncompany {
+export interface Productioncompany {
   id: number;
 
   logo_path?: string;
@@ -74,13 +74,13 @@ interface Productioncompany {
   origin_country: string;
 }
 
-interface Genre {
+export interface Genre {
   id: number;
 
   name: string;
 }
 
-interface Belongstocollection {
+export interface Belongstocollection {
   id: number;
 
   name: string;
@@ -98,7 +98,7 @@ export interface ActoresPelicula {
   crew: Crew[];
 }
 
-interface Crew {
+export interface Crew {
   adult: boolean;
 
   gender: number;
@@ -122,7 +122,7 @@ interface Crew {
   job: string;
 }
 
-interface Cast {
+export interface Cast {
   adult: boolean;
 
   gender: number;
